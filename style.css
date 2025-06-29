@@ -1,0 +1,95 @@
+/* Basic Reset and Body Styling */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #555;
+  }
+  
+  /* Art Gallery Layout */
+  .art-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px; /* Space between items */
+    max-width: 1200px; /* Max width for the gallery */
+    margin: 0 auto; /* Center the gallery */
+    padding: 0 10px; /* Add some padding on the sides */
+  }
+  
+  .artwork-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer; /* Indicates it's clickable */
+    overflow: hidden; /* Helps contain content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for effects */
+  }
+  
+  .artwork-item:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .artwork-item img {
+    max-width: 100%; /* Ensure image fits container */
+    height: auto;
+    display: block; /* Removes extra space below image */
+    margin: 0 auto 15px auto; /* Center image and add space below */
+    border-radius: 4px;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for enlarge effect */
+  }
+  
+  /* Styling for the Story Section */
+  .artwork-story {
+    display: none; /* Hide the story by default */
+    margin-top: 15px;
+    text-align: left;
+    opacity: 0; /* Start with hidden opacity */
+    max-height: 0; /* Collapse the story div */
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out; /* Smooth transition for showing/hiding */
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+  }
+  
+  .artwork-story h2 {
+      margin-top: 0;
+      font-size: 1.2em;
+      color: #666;
+      margin-bottom: 10px;
+  }
+  
+  /* Styles applied when the artwork-item is active (clicked) */
+  .artwork-item.is-active {
+      background-color: #eef; /* Optional: change background when active */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  .artwork-item.is-active img {
+    /* You could add a subtle transform here, but a full modal/lightbox is better for true enlargement */
+    /* transform: scale(1.05); */
+  }
+  
+  .artwork-item.is-active .artwork-story {
+    display: block; /* Show the story */
+    opacity: 1; /* Fade in the story */
+    max-height: 500px; /* Or a value large enough to contain content, allows transition */
+    /* Note: max-height transition works best with a defined height, 'auto' doesn't transition well */
+  }
+  
+  /* Basic Responsive Adjustment (Example) */
+  @media (max-width: 600px) {
+    .art-gallery {
+      grid-template-columns: 1fr; /* Stack items on small screens */
+    }
+  }
